@@ -1,6 +1,3 @@
-
-
-
 // create a 16x16 grid of divs
 const gridContainer = document.querySelector(".grid");
 
