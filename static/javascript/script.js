@@ -53,9 +53,22 @@ function getUserInputs(){
     return userInputs;
 }
 
+function clearGrid(){
+    // Remove the current child elements from the grid container
+    
+    let currElement = gridContainer.firstChild;
+
+    while (currElement !== null){
+        let nextElement = currElement.nextSibling;
+        gridContainer.removeChild(currElement);
+        currElement = nextElement;
+    }
+}
+
 const newSketchpadBtn = document.querySelector(".sketchpad-btn");
 newSketchpadBtn.addEventListener("click", () => {
     let userInputs = getUserInputs();
+    clearGrid();
 });
 
 // Event listeners
