@@ -69,6 +69,7 @@ const newSketchpadBtn = document.querySelector(".sketchpad-btn");
 newSketchpadBtn.addEventListener("click", () => {
     let userInputs = getUserInputs();
     clearGrid();
+    createGrid(userInputs.rows, userInputs.cols);
 });
 
 // Event listeners
