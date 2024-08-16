@@ -19,6 +19,46 @@ function createGrid(rows, cols){
 
 createGrid(16, 16);
 
+// create a new grid using user input
+function getUserInputs(){
+    let userInputs = {};
+    let validInput = false;
+
+    while (!validInput){
+        let userInput = parseInt(prompt("Enter a number of rows"));
+
+        if (isNaN(userInput)){
+            alert("Invalid input! Input must be a number.");
+        } 
+        else {
+            userInputs.rows = userInput;
+            validInput = true;
+        }
+    }
+
+    validInput = false;
+
+    while (!validInput){
+        let userInput = parseInt(prompt("Enter a number of columns"));
+
+        if (isNaN(userInput)){
+            alert("Invalid input! Input must be a number.");
+        } 
+        else {
+            userInputs.cols = userInput;
+            validInput = true;
+        }
+    }
+
+    return userInputs;
+}
+
+const newSketchpadBtn = document.querySelector(".sketchpad-btn");
+newSketchpadBtn.addEventListener("click", () => {
+    let userInputs = getUserInputs();
+});
+
+// Event listeners
 gridContainer.addEventListener("mousemove", (e) => {
     e.target.style["background-color"] = "#ff950079";
 });
