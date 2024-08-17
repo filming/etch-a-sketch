@@ -43,7 +43,14 @@ body {
 .sketchpad-btn {
     border: none;
     background-color: #FCBF49;
+    padding: 4px;
     font-size: 36px;
     font-weight: bold;
     font-family: "Roboto", sans-serif;
+}
+
+.sketchpad-btn:hover {
+    cursor: pointer;
+    background-color: #fcc0499b;
+    color: #EAE2B7;
 }
