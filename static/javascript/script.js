@@ -17,8 +17,6 @@ function createGrid(rows, cols){
     }
 }
 
-createGrid(16, 16);
-
 /** Get valid user input for new grid creation. */
 function getUserInput(){
     let userInput;
@@ -53,13 +51,17 @@ function clearGrid(){
 }
 
 // Event listeners
-gridContainer.addEventListener("mousemove", (e) => {
-    e.target.style["background-color"] = "#ff950079";
-});
-
-const newSketchpadBtn = document.querySelector(".sketchpad-btn");
-newSketchpadBtn.addEventListener("click", () => {
-    let userInput = getUserInput();
-    clearGrid();
-    createGrid(userInput, userInput);
+document.addEventListener('DOMContentLoaded',() => {
+    gridContainer.addEventListener("mousemove", (e) => {
+        e.target.style["background-color"] = "#ff950079";
+    });
+    
+    const newSketchpadBtn = document.querySelector(".sketchpad-btn");
+    newSketchpadBtn.addEventListener("click", () => {
+        let userInput = getUserInput();
+        clearGrid();
+        createGrid(userInput, userInput);
+    });
+    
+    createGrid(16, 16);
 });
