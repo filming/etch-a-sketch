@@ -19,38 +19,26 @@ function createGrid(rows, cols){
 
 createGrid(16, 16);
 
-/** Get valid user inputs for new grid creation. */
-function getUserInputs(){
-    let userInputs = {};
+/** Get valid user input for new grid creation. */
+function getUserInput(){
+    let userInput;
     let validInput = false;
 
     while (!validInput){
-        let userInput = parseInt(prompt("Enter a number of rows"));
+        userInput = parseInt(prompt("Enter the number of square per side (max: 100)"));
 
         if (isNaN(userInput)){
             alert("Invalid input! Input must be a number.");
         } 
+        else if (userInput < 1 || userInput > 100){
+            alert("Invalid input! Input must be between 1 and 100.");
+        }
         else {
-            userInputs.rows = userInput;
             validInput = true;
         }
     }
 
-    validInput = false;
-
-    while (!validInput){
-        let userInput = parseInt(prompt("Enter a number of columns"));
-
-        if (isNaN(userInput)){
-            alert("Invalid input! Input must be a number.");
-        } 
-        else {
-            userInputs.cols = userInput;
-            validInput = true;
-        }
-    }
-
-    return userInputs;
+    return userInput;
 }
 
 /** Remove the current child elements from the grid container. */
@@ -71,7 +59,7 @@ gridContainer.addEventListener("mousemove", (e) => {
 
 const newSketchpadBtn = document.querySelector(".sketchpad-btn");
 newSketchpadBtn.addEventListener("click", () => {
-    let userInputs = getUserInputs();
+    let userInput = getUserInput();
     clearGrid();
-    createGrid(userInputs.rows, userInputs.cols);
+    createGrid(userInput, userInput);
 });
