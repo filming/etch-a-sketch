@@ -35,8 +35,7 @@ body {
 .grid__col {
     width: 50px;
     height: auto;
-    border: 1px black solid;
-    background-color: red;
+    background-color: #fcc0499b;
     flex: 1;
 }
 
