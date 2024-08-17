@@ -1,6 +1,6 @@
-// create a grid of divs
 const gridContainer = document.querySelector(".grid");
 
+/** Create a grid of X by Y divs. */
 function createGrid(rows, cols){
     for (let i = 0; i < rows; i++){
         const newRowDiv = document.createElement("div");
@@ -19,7 +19,7 @@ function createGrid(rows, cols){
 
 createGrid(16, 16);
 
-// create a new grid using user input
+/** Get valid user inputs for new grid creation. */
 function getUserInputs(){
     let userInputs = {};
     let validInput = false;
@@ -53,9 +53,8 @@ function getUserInputs(){
     return userInputs;
 }
 
+/** Remove the current child elements from the grid container. */
 function clearGrid(){
-    // Remove the current child elements from the grid container
-    
     let currElement = gridContainer.firstChild;
 
     while (currElement !== null){
@@ -65,14 +64,14 @@ function clearGrid(){
     }
 }
 
+// Event listeners
+gridContainer.addEventListener("mousemove", (e) => {
+    e.target.style["background-color"] = "#ff950079";
+});
+
 const newSketchpadBtn = document.querySelector(".sketchpad-btn");
 newSketchpadBtn.addEventListener("click", () => {
     let userInputs = getUserInputs();
     clearGrid();
     createGrid(userInputs.rows, userInputs.cols);
-});
-
-// Event listeners
-gridContainer.addEventListener("mousemove", (e) => {
-    e.target.style["background-color"] = "#ff950079";
 });
