@@ -1,4 +1,5 @@
 const gridContainer = document.querySelector(".grid");
+const changedDivs = [];
 
 /** Create a grid of X by Y divs. */
 function createGrid(rows, cols){
@@ -10,11 +11,36 @@ function createGrid(rows, cols){
             const newColDiv = document.createElement("div");
             newColDiv.classList.add("grid__col");
 
+            // Track mouseenter events so we can change the colour & opacity of each individual column div
+            newColDiv.addEventListener("mouseenter", (e) => {
+                if (!(changedDivs.includes(e.target))){
+                    e.target.style["background-color"] = createRandomHex();
+                    e.target.style["opacity"] = 0.90;
+                    changedDivs.push(e.target);
+                } else {
+                    e.target.style["opacity"] -= 0.10;
+                }
+            })
+
             newRowDiv.appendChild(newColDiv);
         }
 
         gridContainer.appendChild(newRowDiv);
     }
+}
+
+/** Create a random hex colour value. */
+function createRandomHex(){
+    let possibleChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+    let hexStrBuilder = ["#"];
+
+    for (let i = 0; i < 6; i++){
+        const randomNumber = Math.floor(Math.random() * possibleChars.length);
+
+        hexStrBuilder.push(possibleChars[randomNumber]);
+    }
+
+    return hexStrBuilder.join("");
 }
 
 /** Get valid user input for new grid creation. */
@@ -50,12 +76,8 @@ function clearGrid(){
     }
 }
 
-// Event listeners
-document.addEventListener('DOMContentLoaded',() => {
-    gridContainer.addEventListener("mousemove", (e) => {
-        e.target.style["background-color"] = "#ff950079";
-    });
-    
+// Global event listeners
+document.addEventListener('DOMContentLoaded',() => {    
     const newSketchpadBtn = document.querySelector(".sketchpad-btn");
     newSketchpadBtn.addEventListener("click", () => {
         let userInput = getUserInput();
@@ -63,5 +85,5 @@ document.addEventListener('DOMContentLoaded',() => {
         createGrid(userInput, userInput);
     });
     
-    createGrid(16, 16);
+    createGrid(16, 16); // default sketchpad is 16x16
 });
