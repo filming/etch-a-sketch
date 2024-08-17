@@ -41,6 +41,7 @@ body {
 
 .sketchpad-btn {
     border: none;
+    border-radius: 8px;
     background-color: #FCBF49;
     padding: 4px;
     font-size: 36px;
