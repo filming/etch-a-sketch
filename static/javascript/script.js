@@ -13,8 +13,9 @@ function createGrid(rows, cols){
 
             // Track mouseenter events so we can change the colour & opacity of each individual column div
             newColDiv.addEventListener("mouseenter", (e) => {
-                if (!(changedDivs.includes(e.target))){
-                    e.target.style["background-color"] = createRandomHex();
+                e.target.style["background-color"] = createRandomHex();
+
+                if (!(changedDivs.includes(e.target))){     
                     e.target.style["opacity"] = 0.90;
                     changedDivs.push(e.target);
                 } else {
